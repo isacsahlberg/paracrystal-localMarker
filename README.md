@@ -1,5 +1,5 @@
 
-### Averaging a local topological marker
+### Averaging a local topological marker in a non-crystalline system
 
 For more details, see the paper: https://arxiv.org/abs/2301.XXXXX (will be added here in a few days)
 
