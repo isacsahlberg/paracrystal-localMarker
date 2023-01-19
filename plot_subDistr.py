@@ -105,8 +105,8 @@ cb_f = plt.colorbar(sc_f, ax=ax[0,0], ticks=[0.7, 0.8, 0.9, 1, 1.1])
 cb_c = plt.colorbar(sc_c, ax=ax[0,1], ticks=[0.9, 1, 1.1])
 
 # Colorbar labels
-cb_f.set_label('$\mathcal{C}(\mathbf{r})$', fontsize=15)
-cb_c.set_label('$\mathcal{C}(\mathbf{r})$', fontsize=15, c='r')
+cb_f.set_label('$\mathcal{C}(\mathbf{r})$', fontsize=15, c='r')
+cb_c.set_label('$\mathcal{C}(\mathbf{r})$', fontsize=15)
 
 # Bins for the histograms
 acc = 0.015
@@ -117,11 +117,11 @@ bins_c = bins-acc/2
 
 # Histograms
 # hb, *_   = ax[1,0].hist(C_bulk,      bins,   width=0.5*acc, density=True, color='k', alpha=1.0, ls='solid')
-hH, *_     = ax[1,0].hist(C_heart,     bins,   width=0.5*acc, density=True, color='k', alpha=1.0, ls='solid')
+hH, *_     = ax[1,0].hist(C_heart,     bins,   width=0.5*acc, density=True, color='r', alpha=0.6, ls='dotted', ec='k')
 #
-hC, *_     = ax[1,0].hist(C_c,         bins_c, width=0.5*acc, density=True, color='r', alpha=0.6, ls='dotted', ec='k')
-hb_tot, *_ = ax[1,1].hist(hist_C_bulk, bins,   width=0.5*acc, density=True, color='k', alpha=1.0, ls='solid')
-hC_tot, *_ = ax[1,1].hist(hist_C_c,    bins_c, width=0.5*acc, density=True, color='r', alpha=0.6, ls='dotted', ec='k')
+hC, *_     = ax[1,0].hist(C_c,         bins_c, width=0.5*acc, density=True, color='k', alpha=1.0, ls='solid')
+hb_tot, *_ = ax[1,1].hist(hist_C_bulk, bins,   width=0.5*acc, density=True, color='r', alpha=0.6, ls='dotted', ec='k')
+hC_tot, *_ = ax[1,1].hist(hist_C_c,    bins_c, width=0.5*acc, density=True, color='k', alpha=1.0, ls='solid')
 
 # Text boxes
 # str_Cb   = r"$\mathcal{C}_{\mathrm{bulk},i}  \hspace{0.3cm}=\overline{\mathcal C}_{\mathrm{bulk},i}   (\textbf{r})\hspace{0.24cm}=$ "+f"{C_bulk.mean():.3f}"
@@ -131,10 +131,10 @@ str_Cb_tot = r"$\mathcal{C}_{\mathrm{tot,bulk}} \hspace{0.26cm}=$ "+f"{hist_C_bu
 str_Cc_tot = r"$\mathcal{C}_{\mathrm{tot,points}} =$ "+f"{hist_C_c.mean():.3f}"
 props = dict(boxstyle='round', facecolor='gold', alpha=0.2)
 # ax[1,0].text(0.04, 0.89, str_Cb,   transform=ax[1,0].transAxes, c='k', fontsize=14, bbox=props)
-ax[1,0].text(0.04, 0.89, str_CH,   transform=ax[1,0].transAxes, c='k', fontsize=14, bbox=props)
-ax[1,0].text(0.04, 0.77, str_Cc,   transform=ax[1,0].transAxes, c='r', fontsize=14, bbox=props)
-ax[1,1].text(0.05, 0.90, str_Cb_tot, transform=ax[1,1].transAxes, c='k', fontsize=14, bbox=props)
-ax[1,1].text(0.05, 0.79, str_Cc_tot, transform=ax[1,1].transAxes, c='r', fontsize=14, bbox=props)
+ax[1,0].text(0.04, 0.89, str_CH,   transform=ax[1,0].transAxes, c='r', fontsize=14, bbox=props)
+ax[1,0].text(0.04, 0.77, str_Cc,   transform=ax[1,0].transAxes, c='k', fontsize=14, bbox=props)
+ax[1,1].text(0.05, 0.90, str_Cb_tot, transform=ax[1,1].transAxes, c='r', fontsize=14, bbox=props)
+ax[1,1].text(0.05, 0.79, str_Cc_tot, transform=ax[1,1].transAxes, c='k', fontsize=14, bbox=props)
 
 # Limits
 ax[1,0].set_xlim([bins.min(), bins.max()])
@@ -156,7 +156,7 @@ _ = ax[1,0].text(0.02, 1.08, r'\textbf c', transform=ax[1,0].transAxes, fontsize
 _ = ax[1,1].text(0.02, 1.08, r'\textbf d', transform=ax[1,1].transAxes, fontsize=17, verticalalignment='top')
 
 # Save figure
-plt.savefig(f'bulkHeart-vs-points_L{Lx}.png', dpi=500)
+plt.savefig(f'bulkHeart-vs-points_L{Lx}_v1.png', dpi=300)
 # plt.savefig(f'bulk-vs-points_L{Lx}.png', dpi=500)
 
 plt.show()
