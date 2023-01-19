@@ -14,9 +14,9 @@ $ python plot_subDistr.py
 ```
 produces and saves the figure _**bulkHeart-vs-points_L40.png**_ here below.
 
-!---[image](bulkHeart-vs-points_L40.png)
+<img src="bulkHeart-vs-points_L40.png" width="500"/>
 
-In **a**, we show the local Chern marker $\mathcal{C}(\mathbf{r})$ calculated ~~for all of the~~— I mean for _most_ of the bulk points, and they show significant fluctuations. In **b**, we sample the marker at random points within the red boundary which defines the bulk.
+In $\textbf{a}$, we show the local Chern marker $\mathcal{C}(\mathbf{r})$ calculated ~~for all of the~~— I mean for _most_ of the bulk points, and they show significant fluctuations. In $\textbf{b}$, we sample the marker at random points within the red boundary which defines the bulk.
 For only 1 configuration, the distributions are not of very high quality, as seen in **c**, and the few random points certainly do not make up a good final result.
 The average local marker for both the random points (in red) and the bulk points (in black) are decent, but clearly deviate from the true value 1.
 Now, repeating this process for $N=10$ configurations means we are getting closer to the true distribution of values, and that gives us **d**, where all calculated values have been included. In black, we this time show all bulk points — not just the heart :) — and see that the distributions match very well, including predicting almost exactly the same mean value for the local Chern number.
