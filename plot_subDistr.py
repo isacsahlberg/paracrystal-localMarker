@@ -10,8 +10,8 @@ import pickle
 
 #%%  Import data
 
-# with open('data_L30_eps20_N10.pkl', 'rb') as f:
-with open('data_L40_eps20_N10.pkl', 'rb') as f:
+# with open('data/data_L30_eps20_N10.pkl', 'rb') as f:
+with open('data/data_L40_eps20_N10.pkl', 'rb') as f:
     data_dict = pickle.load(f)
 
 Xvec_full0 = data_dict['Xvec_full0']
