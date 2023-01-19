@@ -9,7 +9,6 @@ import pickle
 
 
 #%%  Import data
-
 # with open('data/data_L30_eps20_N10.pkl', 'rb') as f:
 with open('data/data_L40_eps20_N10.pkl', 'rb') as f:
     data_dict = pickle.load(f)
@@ -29,7 +28,6 @@ N_samples = len(list_Chern_full)
 
 
 #%%  Cut out borders, choose random points
-
 border = 4
 Npoints = 100
 
@@ -78,13 +76,10 @@ hist_C_c    = np.array([c for C_c in list_C_c for c in C_c])
 
 
 #%%  Plotting
-
 fig, ax = plt.subplots(2, 2, figsize=(9, 7), tight_layout=True)
 
 # Set visuals
-plt.rcParams.update({
-    "text.usetex": True,
-    "font.family": "serif"})
+plt.rcParams.update({"text.usetex": True, "font.family": "serif"})
 
 # Background points in small, faint grey
 ax[0,0].scatter(Xvec_full, Yvec_full, 1, 'grey')
@@ -131,8 +126,8 @@ str_Cb_tot = r"$\mathcal{C}_{\mathrm{tot,bulk}} \hspace{0.26cm}=$ "+f"{hist_C_bu
 str_Cc_tot = r"$\mathcal{C}_{\mathrm{tot,points}} =$ "+f"{hist_C_c.mean():.3f}"
 props = dict(boxstyle='round', facecolor='gold', alpha=0.2)
 # ax[1,0].text(0.04, 0.89, str_Cb,   transform=ax[1,0].transAxes, c='k', fontsize=14, bbox=props)
-ax[1,0].text(0.04, 0.89, str_CH,   transform=ax[1,0].transAxes, c='r', fontsize=14, bbox=props)
-ax[1,0].text(0.04, 0.77, str_Cc,   transform=ax[1,0].transAxes, c='k', fontsize=14, bbox=props)
+ax[1,0].text(0.04, 0.89, str_CH,     transform=ax[1,0].transAxes, c='r', fontsize=14, bbox=props)
+ax[1,0].text(0.04, 0.77, str_Cc,     transform=ax[1,0].transAxes, c='k', fontsize=14, bbox=props)
 ax[1,1].text(0.05, 0.90, str_Cb_tot, transform=ax[1,1].transAxes, c='r', fontsize=14, bbox=props)
 ax[1,1].text(0.05, 0.79, str_Cc_tot, transform=ax[1,1].transAxes, c='k', fontsize=14, bbox=props)
 
