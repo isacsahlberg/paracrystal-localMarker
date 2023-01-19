@@ -150,10 +150,10 @@ ax[1,0].set_yticks([])
 ax[1,1].set_yticks([])
 
 # Subfigure labels
-_ = ax[0,0].text(0.02, 1.08, r'\textbf a', transform=ax[0,0].transAxes, fontsize=17, verticalalignment='top')
-_ = ax[0,1].text(0.02, 1.08, r'\textbf b', transform=ax[0,1].transAxes, fontsize=17, verticalalignment='top')
-_ = ax[1,0].text(0.02, 1.08, r'\textbf c', transform=ax[1,0].transAxes, fontsize=17, verticalalignment='top')
-_ = ax[1,1].text(0.02, 1.08, r'\textbf d', transform=ax[1,1].transAxes, fontsize=17, verticalalignment='top')
+_ = ax[0,0].text(0.02, 1.1, r'\textbf{a)}', transform=ax[0,0].transAxes, fontsize=17, verticalalignment='top')
+_ = ax[0,1].text(0.02, 1.1, r'\textbf{b)}', transform=ax[0,1].transAxes, fontsize=17, verticalalignment='top')
+_ = ax[1,0].text(0.02, 1.1, r'\textbf{c)}', transform=ax[1,0].transAxes, fontsize=17, verticalalignment='top')
+_ = ax[1,1].text(0.02, 1.1, r'\textbf{d)}', transform=ax[1,1].transAxes, fontsize=17, verticalalignment='top')
 
 # Save figure
 # plt.savefig(f'figures/bulkHeart-vs-points_L{Lx}.pdf', dpi=400)
