@@ -156,7 +156,7 @@ _ = ax[1,0].text(0.02, 1.08, r'\textbf c', transform=ax[1,0].transAxes, fontsize
 _ = ax[1,1].text(0.02, 1.08, r'\textbf d', transform=ax[1,1].transAxes, fontsize=17, verticalalignment='top')
 
 # Save figure
-# plt.savefig(f'bulkHeart-vs-points_L{Lx}.pdf', dpi=400)
-plt.savefig(f'bulk-vs-points_L{Lx}.png', dpi=200)
+# plt.savefig(f'figures/bulkHeart-vs-points_L{Lx}.pdf', dpi=400)
+plt.savefig(f'figures/bulkHeart-vs-points_L{Lx}.png', dpi=200)
 
 plt.show()
