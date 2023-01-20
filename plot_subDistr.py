@@ -110,13 +110,28 @@ bins += [x for i in range(1000) if (x:=round(C_bulk.mean())+acc/2+i*acc) < C_bul
 bins = np.sort(bins)
 bins_c = bins-acc/2
 
-# Histograms
-# hb, *_   = ax[1,0].hist(C_bulk,      bins,   width=0.5*acc, density=True, color='k', alpha=1.0, ls='solid')
-hH, *_     = ax[1,0].hist(C_heart,     bins,   width=0.5*acc, density=True, color='r', alpha=0.6, ls='dotted', ec='k')
-#
-hC, *_     = ax[1,0].hist(C_c,         bins_c, width=0.5*acc, density=True, color='k', alpha=1.0, ls='solid')
-hb_tot, *_ = ax[1,1].hist(hist_C_bulk, bins,   width=0.5*acc, density=True, color='r', alpha=0.6, ls='dotted', ec='k')
-hC_tot, *_ = ax[1,1].hist(hist_C_c,    bins_c, width=0.5*acc, density=True, color='k', alpha=1.0, ls='solid')
+# # Histograms
+# # hb, *_   = ax[1,0].hist(C_bulk,      bins,   width=0.5*acc, density=True, color='k', alpha=1.0, ls='solid')
+# hH, *_     = ax[1,0].hist(C_heart,     bins,   width=0.5*acc, density=True, color='r', alpha=0.6, ls='dotted', ec='k')
+# hC, *_     = ax[1,0].hist(C_c,         bins_c, width=0.5*acc, density=True, color='k', alpha=1.0, ls='solid')
+# hb_tot, *_ = ax[1,1].hist(hist_C_bulk, bins,   width=0.5*acc, density=True, color='r', alpha=0.6, ls='dotted', ec='k')
+# hC_tot, *_ = ax[1,1].hist(hist_C_c,    bins_c, width=0.5*acc, density=True, color='k', alpha=1.0, ls='solid')
+
+bins_bar = bins-acc/2
+
+# Histograms using plt.bar()
+hi_b, _ = np.histogram(C_heart, bins_bar)
+hi_C, _ = np.histogram(C_c, bins_bar)
+hi_b_tot, _ = np.histogram(hist_C_bulk, bins_bar)
+hi_C_tot, _ = np.histogram(hist_C_c, bins_bar)
+
+norma     = C_heart.size / C_c.size
+norma_tot = hist_C_bulk.size / hist_C_c.size
+
+_ = ax[1,0].bar(bins_bar[1:], hi_C*norma,         align='center', width=1.0*acc, color='white', ec='k')
+_ = ax[1,0].bar(bins_bar[1:], hi_b,               align='center', width=0.6*acc, color='red', alpha=0.6)
+_ = ax[1,1].bar(bins_bar[1:], hi_C_tot*norma_tot, align='center', width=1.0*acc, color='white', ec='k')
+_ = ax[1,1].bar(bins_bar[1:], hi_b_tot,           align='center', width=0.6*acc, color='red', alpha=0.6)
 
 # Text boxes
 # str_Cb   = r"$\mathcal{C}_{\mathrm{bulk},i}  \hspace{0.3cm}=\overline{\mathcal C}_{\mathrm{bulk},i}   (\textbf{r})\hspace{0.24cm}=$ "+f"{C_bulk.mean():.3f}"
@@ -127,16 +142,18 @@ str_Cc_tot = r"$\mathcal{C}_{\mathrm{tot,points}} =$ "+f"{hist_C_c.mean():.3f}"
 props = dict(boxstyle='round', facecolor='gold', alpha=0.2)
 # ax[1,0].text(0.04, 0.89, str_Cb,   transform=ax[1,0].transAxes, c='k', fontsize=14, bbox=props)
 ax[1,0].text(0.04, 0.89, str_CH,     transform=ax[1,0].transAxes, c='r', fontsize=14, bbox=props)
-ax[1,0].text(0.04, 0.77, str_Cc,     transform=ax[1,0].transAxes, c='k', fontsize=14, bbox=props)
+ax[1,0].text(0.04, 0.76, str_Cc,     transform=ax[1,0].transAxes, c='k', fontsize=14, bbox=props)
 ax[1,1].text(0.05, 0.90, str_Cb_tot, transform=ax[1,1].transAxes, c='r', fontsize=14, bbox=props)
-ax[1,1].text(0.05, 0.79, str_Cc_tot, transform=ax[1,1].transAxes, c='k', fontsize=14, bbox=props)
+ax[1,1].text(0.05, 0.78, str_Cc_tot, transform=ax[1,1].transAxes, c='k', fontsize=14, bbox=props)
 
 # Limits
 ax[1,0].set_xlim([bins.min(), bins.max()])
 ax[1,1].set_xlim([bins.min(), bins.max()])
 # ax[1,0].set_ylim([0, 1.45*hb.max()])
-ax[1,0].set_ylim([0, 1.45*hH.max()])
-ax[1,1].set_ylim([0, 1.45*hb_tot.max()])
+# ax[1,0].set_ylim([0, 1.45*hH.max()])
+# ax[1,1].set_ylim([0, 1.45*hb_tot.max()])
+ax[1,0].set_ylim([0, 1.5*hi_b.max()])
+ax[1,1].set_ylim([0, 1.5*hi_b_tot.max()])
 
 # Ticks
 ax[0,0].set_yticks([10*y for y in range(5)])
@@ -151,7 +168,7 @@ _ = ax[1,0].text(0.02, 1.1, r'\textbf{c)}', transform=ax[1,0].transAxes, fontsiz
 _ = ax[1,1].text(0.02, 1.1, r'\textbf{d)}', transform=ax[1,1].transAxes, fontsize=17, verticalalignment='top')
 
 # Save figure
-# plt.savefig(f'figures/bulkHeart-vs-points_L{Lx}.pdf', dpi=400)
+# plt.savefig(f'figures/bulkHeart-vs-points_L{Lx}.pdf', dpi=300)
 plt.savefig(f'figures/bulkHeart-vs-points_L{Lx}.png', dpi=200)
 
 plt.show()
