@@ -1,7 +1,7 @@
 
 ### Averaging a local topological marker in a non-crystalline system
 
-For more details, see the paper: https://arxiv.org/abs/2301.XXXXX (will be added here in a few days)
+For more details, see the paper: arxiv.org/abs/2301.XXXXX (will be added here in a few days)
 
 In theoretical condensed matter physics, it is sometimes useful to calculate a local topological marker representing e.g. a Chern number, for a finite lattice. The average of this marker corresponds to the true topological index. For _non-crystalline_ systems, there exists substantial variation in the surroundings for each lattice point, and the local markers therefore also have significant fluctuations. Furthermore, the sum of the local Chern marker over the entire finite system gives zero, and this is seen in the borders behaving "erratically." Thus, to evaluate the topological index, it is useful to only consider bulk points. In practice, we exclude a finite-width border, and only take into account the inner points of the system.
 
