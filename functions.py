@@ -1,19 +1,18 @@
-# Here we gather auxiliary functions, which we call from the main program
 import math
 import numpy as np
 
 
 def heart(x_, y_, x0=0, y0=0):
-    '''Simple equation of the heart'''
+    """Simple equation of the heart"""
     x = x_-x0
     y = y_-y0
     return (x**2 + y**2 - 1)**3 <= x**2 * y**3
 
 
 def giveChosenHeart(X_in, Y_in):
-    '''From any set of (x,y)-coordinates,
+    """From any set of (x,y)-coordinates,
     get a cutout which is heart-shaped (boolean array)
-    '''
+    """
     assert X_in.shape == Y_in.shape, 'Coordinate pairs do not match in length'
     # Find the middle of the lattice
     x0, y0, idx_mid, _ = find_mid_point(X_in, Y_in)
@@ -28,6 +27,7 @@ def giveChosenHeart(X_in, Y_in):
 
 
 def find_mid_point(X, Y, xy_tuple_0=None):
+    """Find the closest (x,y)-point to the middle, or the input tuple"""
     assert len(X)==len(Y), 'arrays X,Y need to be of same len()'
 
     # Around what point are we considering
@@ -45,7 +45,7 @@ def find_mid_point(X, Y, xy_tuple_0=None):
 
 
 def getSubsystemCutout(Lx, Ly, Xvec_full, Yvec_full):
-    '''Cut out a box of size Lx-by-Ly from the given set of (x,y)-coordinates'''
+    """Cut out a box of size Lx-by-Ly from the given set of (x,y)-coordinates"""
     
     # The "full" system has an extent
     Lx_full = max(Xvec_full) - min(Xvec_full)  # the extent in x direction
@@ -65,15 +65,12 @@ def getSubsystemCutout(Lx, Ly, Xvec_full, Yvec_full):
 
 
 def chooseRandomBulkPoints(Xvec, Yvec, Lx, Npoints, seed=None, border=5):
-    '''
-    Randomly choose some points from the given set of (x,y)-coordinates,
-    but exclude borders of thickness 'border'.
-    If Npoints > len(Xvec), then the maximum number of points is chosen (still exluding borders)
-    '''
+    """Randomly choose points from given set of (x,y)-coordinates
 
-    # if border is None:
-    #     border = 5  # Lx/4
-    
+    Exlcuding borders of thickness 'border', randomly choose some points
+    from the given set of (x,y)-coordinates.
+    If Npoints > len(Xvec), then the maximum number of points is chosen (still exluding borders)
+    """    
     # Create an RNG generator, and use it to draw random numbers
     rng = np.random.default_rng(seed)
     
