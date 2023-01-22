@@ -14,6 +14,7 @@ def giveChosenHeart(X_in, Y_in):
     get a cutout which is heart-shaped (boolean array)
     """
     assert X_in.shape == Y_in.shape, 'Coordinate pairs do not match in length'
+    
     # Find the middle of the lattice
     x0, y0, idx_mid, _ = find_mid_point(X_in, Y_in)
     X_ = X_in - X_in.mean()
@@ -46,7 +47,6 @@ def find_mid_point(X, Y, xy_tuple_0=None):
 
 def getSubsystemCutout(Lx, Ly, Xvec_full, Yvec_full):
     """Cut out a box of size Lx-by-Ly from the given set of (x,y)-coordinates"""
-    
     # The "full" system has an extent
     Lx_full = max(Xvec_full) - min(Xvec_full)  # the extent in x direction
     Ly_full = max(Yvec_full) - min(Yvec_full)
